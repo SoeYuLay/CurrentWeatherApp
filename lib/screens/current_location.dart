@@ -102,14 +102,13 @@ class _CurrentLocationState extends State<CurrentLocation> {
                         ),
                         Text('Today, ${getDate()}',
                         style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25
+                          fontSize: 20
                         ),
                         ),
                         Text('$cityName',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 25
+                              fontSize: 30,
                           ),
                         ),
                         Text('$weatherIcon',
@@ -120,25 +119,23 @@ class _CurrentLocationState extends State<CurrentLocation> {
                         ),
                         Text('Current Weather',
                           style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 25
+                              fontSize: 20
                           ),
                         ),
                         Text(getTime(),
                           style: TextStyle(
-                              fontWeight: FontWeight.bold,
                               fontSize: 25
                           ),
                         ),
                         Text('$temperature°',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 50
+                              fontSize: 55
                           ),
                         ),
                         Text('$weatherMessage',
                           style: TextStyle(
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.w500,
                               fontSize: 25
                           ),
                         ),
