@@ -1,4 +1,3 @@
-
 import 'package:current_weather/services/location.dart';
 import 'package:current_weather/services/network.dart';
 
@@ -6,19 +5,28 @@ const APIkey = '81b25695c37b4cf7e7ddccdf086f997f';
 const openWeatherURL = 'https://api.openweathermap.org/data/2.5/weather';
 
 class WeatherModel {
-
   Future<dynamic> getCurrentLocationWeather() async {
     Location location = Location();
     await location.getCurrentLocation();
 
-    var url = Uri.parse('$openWeatherURL?lat=${location.latitude}&lon=${location
-        .longitude}&appid=$APIkey&units=metric');
+    var url = Uri.parse(
+        '$openWeatherURL?lat=${location.latitude}&lon=${location.longitude}&appid=$APIkey&units=metric');
+    NetworkHelper networkHelper = NetworkHelper(url);
+    return await networkHelper.getWeatherData();
+  }
+
+  Future<dynamic> getCityWeather(String cityName) async {
+    var url =
+        Uri.parse('$openWeatherURL?q=$cityName&appid=$APIkey&units=metric');
+
     NetworkHelper networkHelper = NetworkHelper(url);
     return await networkHelper.getWeatherData();
   }
 
   String getWeatherIcon(int condition) {
-    if (condition < 300) {
+    if (condition == 1000){
+      return '🥰';
+    }else if (condition < 300) {
       return '🌩';
     } else if (condition < 400) {
       return '🌧';
@@ -38,7 +46,9 @@ class WeatherModel {
   }
 
   String getMessage(int temp) {
-    if (temp > 25) {
+    if (temp == 200) {
+      return 'Sky is Blue, Ocean is Blue & I Love You';
+    } else if (temp > 25) {
       return 'It\'s 🍦 time';
     } else if (temp > 20) {
       return 'Time for shorts and 👕';
