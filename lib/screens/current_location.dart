@@ -105,11 +105,20 @@ class _CurrentLocationState extends State<CurrentLocation> {
                           fontSize: 20
                         ),
                         ),
-                        Text('$cityName',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30,
-                          ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.location_on),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text('$cityName',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 30,
+                              ),
+                            ),
+                          ],
                         ),
                         Text('$weatherIcon',
                           style: TextStyle(
@@ -122,16 +131,31 @@ class _CurrentLocationState extends State<CurrentLocation> {
                               fontSize: 20
                           ),
                         ),
-                        Text(getTime(),
-                          style: TextStyle(
-                              fontSize: 25
-                          ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.timer,size: 28,),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(getTime(),
+                              style: TextStyle(
+                                  fontSize: 25
+                              ),
+                            ),
+                          ],
                         ),
-                        Text('$temperature°',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 55
-                          ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.thermostat,size: 50,color: Colors.deepOrangeAccent,),
+                            Text('$temperature°',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 55
+                              ),
+                            ),
+                          ],
                         ),
                         Text('$weatherMessage',
                           style: TextStyle(
