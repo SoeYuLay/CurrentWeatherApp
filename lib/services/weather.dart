@@ -1,13 +1,8 @@
-import 'dart:io';
 
 import 'package:current_weather/services/location.dart';
 import 'package:current_weather/services/network.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-import '../main.dart';
-
-// const APIkey = '81b25695c37b4cf7e7ddccdf086f997f';
-// const openWeatherURL = 'https://api.openweathermap.org/data/2.5/weather';
 
 class WeatherModel {
   Future<dynamic> getCurrentLocationWeather() async {
