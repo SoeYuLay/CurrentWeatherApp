@@ -1,8 +1,13 @@
+import 'dart:io';
+
 import 'package:current_weather/services/location.dart';
 import 'package:current_weather/services/network.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-const APIkey = '81b25695c37b4cf7e7ddccdf086f997f';
-const openWeatherURL = 'https://api.openweathermap.org/data/2.5/weather';
+import '../main.dart';
+
+// const APIkey = '81b25695c37b4cf7e7ddccdf086f997f';
+// const openWeatherURL = 'https://api.openweathermap.org/data/2.5/weather';
 
 class WeatherModel {
   Future<dynamic> getCurrentLocationWeather() async {
@@ -10,14 +15,15 @@ class WeatherModel {
     await location.getCurrentLocation();
 
     var url = Uri.parse(
-        '$openWeatherURL?lat=${location.latitude}&lon=${location.longitude}&appid=$APIkey&units=metric');
+        '${dotenv.env['openWeatherURL']}?lat=${location.latitude}&lon=${location.longitude}&appid=${dotenv.env['APIKey']}&units=metric');
     NetworkHelper networkHelper = NetworkHelper(url);
     return await networkHelper.getWeatherData();
+
   }
 
   Future<dynamic> getCityWeather(String cityName) async {
     var url =
-        Uri.parse('$openWeatherURL?q=$cityName&appid=$APIkey&units=metric');
+        Uri.parse('${dotenv.env['openWeatherURL']}?q=$cityName&appid=${dotenv.env['APIKey']}&units=metric');
 
     NetworkHelper networkHelper = NetworkHelper(url);
     return await networkHelper.getWeatherData();
@@ -25,7 +31,7 @@ class WeatherModel {
 
   String getWeatherIcon(int condition) {
     if (condition == 1000){
-      return '🥰';
+      return '🥵';
     }else if (condition < 300) {
       return '🌩';
     } else if (condition < 400) {
@@ -47,7 +53,7 @@ class WeatherModel {
 
   String getMessage(int temp) {
     if (temp == 200) {
-      return 'Sky is Blue, Ocean is Blue & I Love You';
+      return 'Hot Girlfriend Alert 🚨';
     } else if (temp > 25) {
       return 'It\'s 🍦 time';
     } else if (temp > 20) {
